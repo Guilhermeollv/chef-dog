@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="hero-dog.webp" fetchpriority="high">
+<link rel="preload" as="image" href="hero-dog.webp" imagesrcset="hero-dog-640.webp 640w, hero-dog.webp 1100w" imagesizes="(max-width:900px) 90vw, 48vw" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
@@ -88,13 +88,13 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 .trust{display:flex;gap:14px 22px;flex-wrap:wrap;font-size:14px;color:var(--text-2);font-weight:600}
 .trust span{display:inline-flex;align-items:center;gap:7px}.trust .ic{width:17px;height:17px;color:var(--purple)}
 .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:340px}
-.hero-visual .hero-dog{width:100%;border-radius:24px;box-shadow:var(--shadow-lg);display:block;position:relative;z-index:2}
+.hero-visual .hero-dog{width:100%;height:auto;border-radius:24px;box-shadow:var(--shadow-lg);display:block;position:relative;z-index:2}
 .hero-visual .book{max-width:88%;filter:drop-shadow(0 24px 44px rgba(44,44,56,.20));position:relative;z-index:2}
 .sticker{position:absolute;z-index:4;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:11px 15px;font-weight:700;color:var(--text);font-size:13.5px;display:flex;align-items:center;gap:8px}
 .sticker .ic{width:18px;height:18px;color:var(--orange)}
 .st-1{top:14px;right:-2%}
 .st-2{bottom:22px;left:-2%}.st-2 .ic{color:var(--purple)}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:26px;padding:38px 0 54px}.hero .sub{max-width:none}.hero-visual{order:-1;min-height:auto}.hero-visual .hero-dog,.hero-visual .book{max-width:100%}.st-1{right:2%}.st-2{left:2%}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:26px;padding:38px 0 54px}.hero .sub{max-width:none}.hero-visual{order:-1;min-height:auto}.hero-visual .hero-dog,.hero-visual .book{max-width:100%}.hero-visual .hero-dog{height:300px;object-fit:cover;object-position:center 30%}.st-1{right:2%}.st-2{left:2%}}
 
 .strip{background:var(--gray-bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .strip-in{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;padding:20px 0}
@@ -337,7 +337,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
       <div class="trust"><span><svg class="ic"><use href="#i-lock"/></svg> Compra segura</span><span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span><span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span></div>
     </div>
     <div class="hero-visual reveal in">
-      <img class="hero-dog" src="hero-dog.webp" width="1100" height="821" fetchpriority="high" decoding="async" alt="Cachorro feliz com petiscos naturais caseiros">
+      <img class="hero-dog" src="hero-dog.webp" srcset="hero-dog-640.webp 640w, hero-dog.webp 1100w" sizes="(max-width:900px) 90vw, 48vw" width="1100" height="821" fetchpriority="high" decoding="async" alt="Cachorro feliz com petiscos naturais caseiros">
       <div class="sticker st-1"><svg class="ic"><use href="#i-leaf"/></svg> 100% natural</div>
       <div class="sticker st-2"><svg class="ic"><use href="#i-heart"/></svg> Feito com amor</div>
     </div>
@@ -368,7 +368,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
     <div class="eyebrow c">De um lado o problema, do outro a solução</div>
     <h2 class="h-sec" style="max-width:20ch;margin-inline:auto">A diferença que decide a saúde do seu cachorro</h2>
   </div>
-  <div class="wrap reveal" style="max-width:920px;margin:36px auto 0"><img src="compare-treats.webp" width="1200" height="670" loading="lazy" decoding="async" alt="Petisco industrializado versus petisco caseiro Chef Dog" style="width:100%;border-radius:22px;box-shadow:var(--shadow-lg);display:block"></div>
+  <div class="wrap reveal" style="max-width:920px;margin:36px auto 0"><img src="compare-treats.webp" width="1200" height="670" loading="lazy" decoding="async" alt="Petisco industrializado versus petisco caseiro Chef Dog" style="width:100%;height:auto;border-radius:22px;box-shadow:var(--shadow-lg);display:block"></div>
   <div class="wrap compare reveal">
     <div class="cmp bad">
       <div class="ctitle"><svg class="ic"><use href="#i-x"/></svg> Petisco de pacote</div>
