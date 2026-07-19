@@ -85,6 +85,20 @@ h1 .hl{color:var(--orange)}
 .foot{text-align:center;font-size:12.5px;color:var(--text-2);padding:24px 20px 40px}
 @media(max-width:520px){.cmp{grid-template-columns:1fr}.card{padding:30px 22px}}
 </style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2159960787881180');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Oferta Especial Upgrade',content_category:'Pet',content_ids:['chefdog-upsell'],currency:'BRL',value:27.67});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2159960787881180&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -162,6 +176,20 @@ h1 .hl{color:var(--orange)}
 </main>
 
 <div class="foot">© 2026 Chef Dog · Material informativo. Não substitui a orientação de um médico-veterinário.</div>
+
+<script>
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href*="pay.kiwify.com.br"]');
+  if(!a||typeof fbq!=='function')return;
+  var upgrade=a.className.indexOf('accept')>-1;
+  fbq('track','InitiateCheckout',{
+    content_name: upgrade ? 'Chef Dog Completo (upgrade)' : 'Chef Dog Essencial',
+    content_ids: [upgrade ? 'chefdog-completo' : 'chefdog-essencial'],
+    currency:'BRL',
+    value: upgrade ? 27.67 : 17.90
+  });
+});
+</script>
 
 </body>
 </html>

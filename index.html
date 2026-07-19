@@ -11,6 +11,20 @@
 <meta property="og:description" content="25 receitas naturais para proteger a saúde do seu cachorro. Sem corante, sem conservante, sem açúcar escondido.">
 <meta property="og:image" content="compare-treats.webp">
 <meta name="twitter:card" content="summary_large_image">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2159960787881180');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Landing Chef Dog',content_category:'Pet',content_ids:['chefdog-landing'],currency:'BRL',value:17.90});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=2159960787881180&ev=PageView&noscript=1"/></noscript>
+<!-- /Meta Pixel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="hero-dog.webp" imagesrcset="hero-dog-640.webp 640w, hero-dog.webp 1100w" imagesizes="(max-width:900px) 90vw, 48vw" fetchpriority="high">
@@ -500,7 +514,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
         <li class="off"><svg class="ic"><use href="#i-x"/></svg> Pacote de Receitas Extras</li>
         <li class="off"><svg class="ic"><use href="#i-x"/></svg> Guia de Saúde &amp; Nutrição</li>
       </ul>
-      <a href="oferta-especial.html" class="btn btn-ghost btn-w">Quero o e-book</a>
+      <a href="oferta-especial.html" class="btn btn-ghost btn-w" data-plan="Plano Essencial" data-value="17.90">Quero o e-book</a>
       <!-- checkout Essencial R$17,90: https://pay.kiwify.com.br/BnOOT7d -->
       <div class="paynote"><svg class="ic"><use href="#i-lock"/></svg> Pix, cartão ou boleto</div>
     </div>
@@ -518,7 +532,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
         <li><svg class="ic"><use href="#i-check"/></svg> Lista de compras e substituições</li>
         <li><svg class="ic"><use href="#i-check"/></svg> Acesso imediato no e-mail</li>
       </ul>
-      <a href="https://pay.kiwify.com.br/fqdqUDR" class="btn btn-primary btn-w btn-lg">Quero o pacote completo <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a href="https://pay.kiwify.com.br/fqdqUDR" class="btn btn-primary btn-w btn-lg" data-plan="Plano Completo" data-value="37.90">Quero o pacote completo <svg class="ic"><use href="#i-arrow"/></svg></a>
       <div class="paynote"><svg class="ic"><use href="#i-lock"/></svg> Pix, cartão ou boleto · ambiente seguro</div>
     </div>
   </div>
@@ -571,6 +585,18 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 </div>
 
 <script>
+/* Meta Pixel: eventos de intenção de compra */
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href*="pay.kiwify.com.br"], a[href*="oferta-especial"]');
+  if(!a||typeof fbq!=='function')return;
+  var plano=a.getAttribute('data-plan')||'Chef Dog';
+  var valor=parseFloat(a.getAttribute('data-value')||'17.90');
+  if(a.href.indexOf('pay.kiwify.com.br')>-1){
+    fbq('track','InitiateCheckout',{content_name:plano,content_ids:['chefdog-completo'],currency:'BRL',value:valor});
+  } else {
+    fbq('trackCustom','ClicouEssencial',{content_name:plano,currency:'BRL',value:valor});
+  }
+});
 function mm(o){document.getElementById('mm').classList[o?'add':'remove']('on')}
 /* reveal on scroll */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
