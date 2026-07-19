@@ -591,11 +591,19 @@ document.addEventListener('click',function(e){
   if(!a||typeof fbq!=='function')return;
   var plano=a.getAttribute('data-plan')||'Chef Dog';
   var valor=parseFloat(a.getAttribute('data-value')||'17.90');
-  if(a.href.indexOf('pay.kiwify.com.br')>-1){
-    fbq('track','InitiateCheckout',{content_name:plano,content_ids:['chefdog-completo'],currency:'BRL',value:valor});
-  } else {
-    fbq('trackCustom','ClicouEssencial',{content_name:plano,currency:'BRL',value:valor});
-  }
+  var completo=a.href.indexOf('pay.kiwify.com.br')>-1;
+
+  /* InitiateCheckout nos DOIS planos: mesma intencao de compra */
+  fbq('track','InitiateCheckout',{
+    content_name:plano,
+    content_ids:[completo?'chefdog-completo':'chefdog-essencial'],
+    content_type:'product',
+    currency:'BRL',
+    value:valor
+  });
+
+  /* evento extra so para voce separar os funis nos relatorios */
+  fbq('trackCustom',completo?'ClicouCompleto':'ClicouEssencial',{content_name:plano,currency:'BRL',value:valor});
 });
 function mm(o){document.getElementById('mm').classList[o?'add':'remove']('on')}
 /* reveal on scroll */
