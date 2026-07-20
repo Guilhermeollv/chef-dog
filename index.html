@@ -46,7 +46,7 @@ src="https://www.facebook.com/tr?id=2159960787881180&ev=PageView&noscript=1"/></
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="hero-dog.webp" imagesrcset="hero-dog-640.webp 640w, hero-dog.webp 1100w" imagesizes="(max-width:900px) 90vw, 48vw" fetchpriority="high">
+<link rel="preload" as="image" href="hero-sad.webp" imagesrcset="hero-sad-640.webp 640w, hero-sad.webp 1200w" imagesizes="(max-width:900px) 92vw, 48vw" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
@@ -113,7 +113,9 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 .stars-inline{display:inline-flex;align-items:center;gap:10px;margin:18px 0 2px;font-weight:700;color:var(--text);font-size:15px}
 .stars-inline .s{color:var(--orange);display:inline-flex;gap:1px;font-size:17px}
 .hero h1{font-size:clamp(30px,4.6vw,54px);font-weight:800;margin:16px 0 18px;letter-spacing:-.03em;line-height:1.1}
-.hero .sub{font-size:18px;color:var(--text-2);max-width:46ch;margin-bottom:26px}
+.hero .sub{font-size:17.5px;color:var(--text-2);max-width:52ch;margin-bottom:16px;line-height:1.62}
+.hero .sub-2{margin-bottom:26px}
+.hero .sub-2 b{color:var(--text);font-weight:700}
 .alert-label{display:inline-flex;align-items:center;gap:8px;background:var(--orange-bg);color:var(--orange-hover);font-weight:700;font-size:13px;padding:9px 16px;border-radius:40px;margin-bottom:18px}
 .alert-label .ic{width:16px;height:16px}
 .hl-danger{color:var(--orange);font-weight:800;box-shadow:inset 0 -.14em 0 var(--orange-soft)}
@@ -380,18 +382,17 @@ body{padding-bottom:76px}
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="reveal in">
-      <span class="alert-label"><svg class="ic"><use href="#i-alert"/></svg> Vire o pacote e leia o verso</span>
-      <h1>O petisco dele tem <span class="hl-danger">corante, BHA e BHT</span>. Todo dia.</h1>
-      <p class="sub">Você não vê hoje. Vê daqui a três anos, na conta do veterinário.</p>
+      <span class="alert-label"><svg class="ic"><use href="#i-alert"/></svg> Antes do próximo petisco, leia isto</span>
+      <h1>O petisco que você dá com amor está <span class="hl-danger">adoecendo ele em silêncio</span>.</h1>
+      <p class="sub">Vire o pacote e leia o verso. Corante artificial, BHA, BHT, xarope de milho, sal. São conservantes sintéticos que vários países restringem até em comida humana — e que o fígado do seu cachorro filtra todo santo dia, a vida inteira.</p>
+      <p class="sub sub-2">Você não vê nada hoje. <b>Vê daqui a três anos, na conta do veterinário.</b></p>
       <div class="hero-cta">
         <a href="#risco" class="btn btn-primary btn-lg">Ver o que tem no pacote <svg class="ic"><use href="#i-arrow-down"/></svg></a>
       </div>
       <div class="trust"><span><svg class="ic"><use href="#i-lock"/></svg> Compra segura</span><span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span><span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span></div>
     </div>
     <div class="hero-visual reveal in">
-      <img class="hero-dog" src="compare-treats.webp" width="1200" height="670" fetchpriority="high" decoding="async" alt="Comparação entre petisco industrializado e petisco natural feito em casa">
-      <div class="cmp-tag cmp-bad">De pacote</div>
-      <div class="cmp-tag cmp-good">Feito em casa</div>
+      <img class="hero-dog" src="hero-sad.webp" srcset="hero-sad-640.webp 640w, hero-sad.webp 1200w" sizes="(max-width:900px) 92vw, 48vw" width="1200" height="670" fetchpriority="high" decoding="async" alt="Cachorro deitado com aspecto abatido ao lado de um pacote de petiscos industrializados derramado no chão">
     </div>
   </div>
   <div class="hero-wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none" style="width:100%;height:56px"><path d="M0 40 C 360 80 1080 0 1440 40 L1440 70 L0 70 Z" fill="#3f2e21"/></svg></div>
