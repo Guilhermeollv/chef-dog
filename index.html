@@ -127,7 +127,13 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 .sticker .ic{width:18px;height:18px;color:var(--orange)}
 .st-1{top:14px;right:-2%}
 .st-2{bottom:22px;left:-2%}.st-2 .ic{color:var(--purple)}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:26px;padding:38px 0 54px}.hero .sub{max-width:none}.hero-visual{order:-1;min-height:auto}.hero-visual .hero-dog,.hero-visual .book{max-width:100%}.hero-visual .hero-dog{height:300px;object-fit:cover;object-position:center 30%}.st-1{right:2%}.st-2{left:2%}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:20px;padding:24px 0 44px}.hero .sub{max-width:none;font-size:16.5px;margin-bottom:20px}.hero h1{margin:12px 0 14px}.alert-label{margin-bottom:12px}
+/* texto e CTA primeiro: a imagem empurrava o botao pra fora da 1a tela */
+.hero-visual{order:0;min-height:auto}
+.hero-visual .hero-dog,.hero-visual .book{max-width:100%}
+.hero-visual .hero-dog{height:auto;object-fit:contain}
+.hero-cta{margin-bottom:18px}
+.st-1{right:2%}.st-2{left:2%}}
 
 .strip{background:var(--gray-bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .strip-in{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;padding:20px 0}
@@ -363,16 +369,18 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="reveal in">
-      <span class="alert-label"><svg class="ic"><use href="#i-alert"/></svg> Antes do próximo petisco, leia isto</span>
-      <h1>O petisco de pacote está <span class="hl-danger">adoecendo o seu cachorro</span> em silêncio.</h1>
-      <p class="sub">A maioria dos petiscos de pacote é ultraprocessada: corante, conservante, açúcar e gordura que vão minando a saúde do seu cachorro em silêncio. E quando o problema aparece, a conta chega alta no veterinário.</p>
-      <div class="hero-cta"><a href="#planos" class="btn btn-primary btn-lg">Quero proteger meu cachorro agora <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+      <span class="alert-label"><svg class="ic"><use href="#i-alert"/></svg> Vire o pacote e leia o verso</span>
+      <h1>O petisco dele tem <span class="hl-danger">corante, BHA e BHT</span>. Todo dia.</h1>
+      <p class="sub">Você não vê hoje. Vê daqui a três anos, na conta do veterinário.</p>
+      <div class="hero-cta">
+        <a href="#planos" class="btn btn-primary btn-lg">Quero as 25 receitas · R$&nbsp;17,90 <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
       <div class="trust"><span><svg class="ic"><use href="#i-lock"/></svg> Compra segura</span><span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span><span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span></div>
     </div>
     <div class="hero-visual reveal in">
-      <img class="hero-dog" src="hero-dog.webp" srcset="hero-dog-640.webp 640w, hero-dog.webp 1100w" sizes="(max-width:900px) 90vw, 48vw" width="1100" height="821" fetchpriority="high" decoding="async" alt="Cachorro feliz com petiscos naturais caseiros">
-      <div class="sticker st-1"><svg class="ic"><use href="#i-leaf"/></svg> 100% natural</div>
-      <div class="sticker st-2"><svg class="ic"><use href="#i-heart"/></svg> Feito com amor</div>
+      <img class="hero-dog" src="compare-treats.webp" width="1200" height="670" fetchpriority="high" decoding="async" alt="Comparação entre petisco industrializado e petisco natural feito em casa">
+      <div class="sticker st-1"><svg class="ic"><use href="#i-leaf"/></svg> 3 ingredientes</div>
+      <div class="sticker st-2"><svg class="ic"><use href="#i-heart"/></svg> Feito em casa</div>
     </div>
   </div>
   <div class="hero-wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none" style="width:100%;height:56px"><path d="M0 40 C 360 80 1080 0 1440 40 L1440 70 L0 70 Z" fill="#3f2e21"/></svg></div>
