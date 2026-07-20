@@ -122,6 +122,13 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 .trust span{display:inline-flex;align-items:center;gap:7px}.trust .ic{width:17px;height:17px;color:var(--purple)}
 .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:340px}
 .hero-visual .hero-dog{width:100%;height:auto;border-radius:24px;box-shadow:var(--shadow-lg);display:block;position:relative;z-index:2}
+/* etiquetas sobre a imagem de comparacao: sem elas ninguem sabe qual lado e qual */
+.cmp-tag{position:absolute;bottom:14px;z-index:3;font-size:13px;font-weight:800;letter-spacing:.02em;padding:7px 14px;border-radius:30px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.punch{max-width:34ch;margin:40px auto 0;text-align:center;font-size:clamp(21px,3vw,27px);font-weight:700;line-height:1.35;color:var(--text)}
+.punch b{color:var(--orange-hover)}
+.cmp-bad{left:6%;background:#C0392B}
+.cmp-good{right:6%;background:#2E7D4F}
+@media(max-width:520px){.cmp-tag{font-size:11.5px;padding:6px 11px;bottom:10px}.cmp-bad{left:4%}.cmp-good{right:4%}}
 .hero-visual .book{max-width:88%;filter:drop-shadow(0 24px 44px rgba(44,44,56,.20));position:relative;z-index:2}
 .sticker{position:absolute;z-index:4;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:11px 15px;font-weight:700;color:var(--text);font-size:13.5px;display:flex;align-items:center;gap:8px}
 .sticker .ic{width:18px;height:18px;color:var(--orange)}
@@ -379,8 +386,8 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
     </div>
     <div class="hero-visual reveal in">
       <img class="hero-dog" src="compare-treats.webp" width="1200" height="670" fetchpriority="high" decoding="async" alt="Comparação entre petisco industrializado e petisco natural feito em casa">
-      <div class="sticker st-1"><svg class="ic"><use href="#i-leaf"/></svg> 3 ingredientes</div>
-      <div class="sticker st-2"><svg class="ic"><use href="#i-heart"/></svg> Feito em casa</div>
+      <div class="cmp-tag cmp-bad">De pacote</div>
+      <div class="cmp-tag cmp-good">Feito em casa</div>
     </div>
   </div>
   <div class="hero-wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none" style="width:100%;height:56px"><path d="M0 40 C 360 80 1080 0 1440 40 L1440 70 L0 70 Z" fill="#3f2e21"/></svg></div>
@@ -392,13 +399,16 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
   <div class="wrap center reveal">
     <div class="eyebrow c">Você já leu o rótulo?</div>
     <h2 class="h-sec" style="max-width:24ch;margin-inline:auto">O que tem dentro daquele petisco de pacote</h2>
-    <p class="lead" style="max-width:62ch;margin:16px auto 0">A maioria dos petiscos industrializados é ultraprocessada. Por trás da embalagem bonitinha se escondem ingredientes baratos que, mordida após mordida, todo santo dia, vão sabotando a saúde do seu melhor amigo. Veja o que o seu dog anda comendo:</p>
+    <p class="lead" style="max-width:62ch;margin:16px auto 0"><b>BHA e BHT são conservantes sintéticos que vários países restringem em comida humana.</b> No petisco do seu cachorro, entram sem limite — junto com corante, açúcar e sal. Veja o que ele anda comendo todo dia:</p>
   </div>
   <div class="wrap risk-grid reveal">
     <div class="risk-card"><div class="ric"><svg class="ic"><use href="#i-scale"/></svg></div><div><h3>Açúcar e gordura demais</h3><p>Colocados pra viciar o paladar do seu cão, empurram ele direto pro sobrepeso e pra obesidade. E cachorro gordo adoece mais e vive menos.</p></div></div>
     <div class="risk-card"><div class="ric"><svg class="ic"><use href="#i-leaf"/></svg></div><div><h3>Corantes e conservantes</h3><p>Aditivos artificiais que o corpo do seu dog não reconhece. O resultado aparece na pele: coceira, alergia e pelo opaco e sem vida.</p></div></div>
     <div class="risk-card"><div class="ric"><svg class="ic"><use href="#i-alert"/></svg></div><div><h3>Sódio em excesso</h3><p>Sal demais pra dar sabor sobrecarrega os rins e o coração do seu cachorro, ano após ano, sem você perceber.</p></div></div>
     <div class="risk-card"><div class="ric"><svg class="ic"><use href="#i-tooth"/></svg></div><div><h3>Tártaro e mau hálito</h3><p>Muitos petiscos de pacote grudam nos dentes e viram tártaro. Depois vem o mau hálito, a dor e a conta salgada da limpeza no veterinário.</p></div></div>
+  </div>
+  <div class="wrap reveal">
+    <p class="punch">O fígado dele filtra isso todo dia, a vida inteira.<br><b>Ele não tem escolha. Você tem.</b></p>
   </div>
   <p class="note-vet">Cada cachorro é único: idade, porte e saúde mudam tudo. Este conteúdo é informativo e não substitui a orientação do seu veterinário.</p>
 </section>
