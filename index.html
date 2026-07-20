@@ -300,7 +300,10 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 .buybar .btxt b{color:var(--text);display:block;font-size:15px;font-weight:700}
 .buybar .btxt span{font-size:12.5px;color:var(--text-2)}
 .buybar .btn{padding:12px 20px;font-size:15px}
-@media(max-width:900px){.buybar{display:flex}body{padding-bottom:76px}}
+/* barra de compra tambem no desktop: o unico CTA de venda antes do final */
+.buybar{display:flex}
+body{padding-bottom:76px}
+@media(min-width:901px){.buybar{padding:12px 40px}}
 
 .mmenu{display:none;position:fixed;inset:0;z-index:60;background:#fff;flex-direction:column;align-items:center;justify-content:center;gap:26px}
 .mmenu.on{display:flex}
@@ -338,6 +341,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
 <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-13 0 9-5 14-13 14-.6 0-1 0-1-1z"/><path d="M8 16c3-3 6-5 9-6"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+<symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6"/></symbol>
 <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13h5l-1 8 8-11h-5l1-7z"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9 7c-3 0-5 2.4-5 5.5S5.7 18 8.3 18c.4 0 .7 0 1-.1M20 7c-3 0-5 2.4-5 5.5s1.7 5.5 4.3 5.5c.4 0 .7 0 1-.1" stroke-width="2.2"/></symbol>
@@ -380,7 +384,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
       <h1>O petisco dele tem <span class="hl-danger">corante, BHA e BHT</span>. Todo dia.</h1>
       <p class="sub">Você não vê hoje. Vê daqui a três anos, na conta do veterinário.</p>
       <div class="hero-cta">
-        <a href="#planos" class="btn btn-primary btn-lg">Quero as 25 receitas · R$&nbsp;17,90 <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a href="#risco" class="btn btn-primary btn-lg">Ver o que tem no pacote <svg class="ic"><use href="#i-arrow-down"/></svg></a>
       </div>
       <div class="trust"><span><svg class="ic"><use href="#i-lock"/></svg> Compra segura</span><span><svg class="ic"><use href="#i-bolt"/></svg> Acesso imediato</span><span><svg class="ic"><use href="#i-shield"/></svg> Garantia de 7 dias</span></div>
     </div>
@@ -394,7 +398,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 </header>
 
 <!-- 2. EXPLICAÇÃO (o risco real, com responsabilidade) -->
-<section class="section">
+<section class="section" id="risco">
   <div class="pawbg"></div>
   <div class="wrap center reveal">
     <div class="eyebrow c">Você já leu o rótulo?</div>
@@ -677,9 +681,22 @@ function tick(){
   if(b)b.textContent=t;
 }
 tick(); cdIv=setInterval(tick,1000);
-/* buy bar após rolar o hero */
+/* buy bar: aparece assim que a pessoa sai do hero e some quando chega
+   na secao de planos (la o botao proprio ja assume). */
 var bb=document.getElementById('bb');
-window.addEventListener('scroll',function(){if(window.scrollY>640)bb.classList.add('show');else bb.classList.remove('show')});
+var secPlanos=document.getElementById('planos');
+function bbTick(){
+  var passouHero = window.scrollY > 320;
+  var chegouPlanos = false;
+  if(secPlanos){
+    var t=secPlanos.getBoundingClientRect().top;
+    chegouPlanos = t < window.innerHeight*0.85;
+  }
+  if(passouHero && !chegouPlanos) bb.classList.add('show');
+  else bb.classList.remove('show');
+}
+window.addEventListener('scroll',bbTick,{passive:true});
+bbTick();
 </script>
 </body>
 </html>
