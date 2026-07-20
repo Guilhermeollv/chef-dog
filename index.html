@@ -94,7 +94,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 
 .annc{background:var(--purple);color:#fff;font-size:14px;font-weight:600;text-align:center;padding:9px 16px}
 .annc b{color:var(--orange-soft)}
-.annc #cd{font-variant-numeric:tabular-nums}
+.annc #cd{font-variant-numeric:tabular-nums;letter-spacing:.3px}
 
 .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
@@ -345,7 +345,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
 </defs></svg>
 
 <!-- announcement -->
-<div class="annc">Oferta de lançamento • <b>50% OFF</b> por tempo limitado • termina em <span id="cd">--:--:--</span></div>
+<div class="annc">Oferta de lançamento • <b>50% OFF</b> • expira em <b id="cd">15:00</b></div>
 
 <!-- nav -->
 <nav class="nav"><div class="wrap nav-in">
@@ -515,7 +515,7 @@ svg.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-
   <div class="wrap center reveal">
     <div class="eyebrow c">A solução que cabe no bolso</div>
     <h2 class="h-sec" style="margin-bottom:18px">Comece hoje pelo valor de um petisco de prateleira</h2>
-    <div class="offer-timer"><svg class="ic"><use href="#i-clock"/></svg> A oferta termina em <b id="cd2">--:--:--</b></div>
+    <div class="offer-timer"><svg class="ic"><use href="#i-clock"/></svg> Sua oferta expira em <b id="cd2">15:00</b></div>
   </div>
   <div class="plans reveal">
     <div class="plan">
@@ -630,11 +630,35 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
 /* faq */
 document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var it=b.parentElement;var was=it.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(o){o.classList.remove('open')});if(!was)it.classList.add('open')})});
-/* countdown (reinicia em ~24h) */
+/* countdown de sessao: 15 min em MM:SS.
+   sessionStorage mantem o mesmo prazo enquanto a aba estiver aberta,
+   entao voltar do upsell nao reinicia o relogio no meio da navegacao. */
 function pad(n){return String(n).padStart(2,'0')}
-var end=new Date(); end.setHours(23,59,59,0);
-function tick(){var d=Math.max(0,end-new Date());var h=Math.floor(d/3.6e6),m=Math.floor(d%3.6e6/6e4),s=Math.floor(d%6e4/1e3);var t=pad(h)+':'+pad(m)+':'+pad(s);var a=document.getElementById('cd'),b=document.getElementById('cd2');if(a)a.textContent=t;if(b)b.textContent=t}
-tick();setInterval(tick,1000);
+var CD_DUR=15*60*1000, cdIv=null, cdEnd;
+try{
+  var salvo=sessionStorage.getItem('cdEnd');
+  if(salvo){ cdEnd=parseInt(salvo,10); }
+  if(!cdEnd || isNaN(cdEnd)){ cdEnd=Date.now()+CD_DUR; sessionStorage.setItem('cdEnd',cdEnd); }
+}catch(e){ cdEnd=Date.now()+CD_DUR; }
+
+function cdExpirou(){
+  var barra=document.querySelector('.annc');
+  if(barra) barra.innerHTML='Oferta de lançamento • <b>50% OFF</b> • últimas horas';
+  var b=document.getElementById('cd2');
+  if(b) b.textContent='encerrando hoje';
+  if(cdIv) clearInterval(cdIv);
+}
+
+function tick(){
+  var d=cdEnd-Date.now();
+  if(d<=0){ cdExpirou(); return; }
+  var m=Math.floor(d/6e4), s=Math.floor(d%6e4/1e3);
+  var t=pad(m)+':'+pad(s);
+  var a=document.getElementById('cd'), b=document.getElementById('cd2');
+  if(a)a.textContent=t;
+  if(b)b.textContent=t;
+}
+tick(); cdIv=setInterval(tick,1000);
 /* buy bar após rolar o hero */
 var bb=document.getElementById('bb');
 window.addEventListener('scroll',function(){if(window.scrollY>640)bb.classList.add('show');else bb.classList.remove('show')});
